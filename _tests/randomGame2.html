@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link href="./css/basic2.css" rel="stylesheet"> 
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.js"></script>
+</head>
+<body>
+    <div class="wrap">
+        <img class="bgImg" src="./img/bg.png">
+        <div class="grid-container">
+            </div>
+        <div class="page">
+            <button class="fun-btn">랜덤뽑기 시작</button>
+        </div>
+    </div>
+</body>
+<script>
+    for(var i=0; i<9; i++){
+        var r = Math.floor(Math.random() * 5) + 2;
+        $(".grid-container").append("<div class='grid-item'"+"name='grid_"+i+ "'>"+"<img src='img/random0"+(r)+ ".png'>"+" </div>");
+    }
+
+    var a1 = [1,2,3,4,5,6,7,8,9];
+    var a2 = [];
+    while(a2.length < 9){
+        var rr = Math.floor(Math.random() * (a1.length-1));
+        a2.push(a1[rr]);
+        var idx = a1.indexOf(a1[rr]); // findIndex = find + indexOf 
+        a1.splice(idx, 1);
+    }
+
+    var a3 = [0,1,2,3,4,5,6,7,8];
+    var flag, testInterval;
+    var d;
+
+    $('.fun-btn').on('click', function(event) {
+        $(this).toggleClass('start-fun');
+        var $page = $('.page');
+        $page.toggleClass('color-bg-start')
+            .toggleClass('bg-animate-color');
+
+        $(this).hasClass('start-fun') ? $(this).text('S T O P') : $(this).text('S T A R T');
+
+        flag = $(this).hasClass('start-fun');
+
+        if(a2.length == 0){
+            $('.fun-btn').text("E N D");
+            $('.fun-btn').attr('disabled', true);   
+        }
+        
+        if(flag == true){
+            if(a2.length > 0){
+                testInterval = setInterval(function() {
+                    var rr = Math.floor(Math.random() * (a3.length)); //0-8
+                    $(".grid-item").removeClass("focus-item");
+                    $("[name='grid_"+(a3[rr])+"']").addClass("focus-item");
+                    d = rr;
+                },50);
+            }
+        }
+        else{
+            console.log("end");
+            clearInterval(testInterval);
+            console.log( d );
+            console.log(" A2: "+a2[d]);
+            console.log(" A3: "+a3[d]);
+            $("[name='grid_"+(a3[d])+"'] > img").attr("src", "img/random"+(((a2[d]+6) < 10) ? "0"+(a2[d]+6) : (a2[d]+6))+".png");
+            a3.splice(d,1);
+            a2.splice(d,1);
+        }
+    });
+
+</script>
+</html>         

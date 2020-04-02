@@ -1,0 +1,161 @@
+body, html { 
+    margin: 0;
+    padding: 0;
+    
+    text-align: center;
+    /* height: 100%; */
+}
+.wrap {
+    width: 100%;
+    overflow-x: hidden;
+    position: relative;
+}
+.bgImg {
+    width: 100%;
+    height: auto;
+    /* border: 0;
+    padding: 0; 
+    width: 100%;
+    height: auto%;
+    overflow: auto;
+    background-image: url('../img/bg.png');
+    background-position: center;
+    background-size: cover;
+    background-attachment: scroll; */
+}
+
+.grid-container {
+    position: absolute;
+    /* height: 54.95%; */
+    display: grid;
+    grid-template-columns: 33.3% 33.3% 33.3%;
+    grid-template-rows: 33.3% 33.3% 33.3%;
+    top: 30.1%;
+    width: 93.1%;
+    height: 50%;
+    margin-left: 3.2%;
+    margin-right: 3%;
+    /* background-color: #2196F3; */
+    /* padding: 10px; */
+    /* border: 2px solid blue; */
+    /* margin: 36% 3.5% 0% 3.8%; */
+}
+.grid-item {
+    background-color: rgba(255, 255, 255, 0);
+    /* border: 1px solid rgba(0, 0, 0, 0.8); */
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    padding: 2%;
+    /* background-position: 50% 50%;
+    background-size: 80%;
+    background-repeat: no-repeat; */
+    /* cursor: pointer; */
+}
+
+.focus-item { 
+    /* content: url('../img/random01.png'); */
+    background: radial-gradient(rgba(255, 0, 0, 0.61), rgba(255, 131, 30, 0.295), rgba(255, 96, 96, 0)); 
+    /* background-color: rgba(185, 185, 185, 0.363); */
+}
+.grid-item > img {
+    height: 100%;
+    margin: 0px auto;
+}
+
+
+
+
+.page {
+    /* border: 2px solid blue; */
+    width: 30%;
+    position: absolute;
+    /* width: 100%;
+    height: 100vh; */
+    display: flex;
+    justify-content: center;
+    bottom: 5%;
+    /* top: 107%; */
+    /* left: 27%; */
+    /* padding: 5%; */
+    border-radius: 5px;
+    margin-left: 35%;
+    /* margin-right: 10%; */
+  }
+  
+  
+  /* add default color for animation start  */
+  
+  
+  /* toggle this class */
+  
+  .color-bg-start {
+    background-color: salmon;
+  }
+  
+  
+  /* toggle class bg-animate-color */
+  
+  .bg-animate-color {
+    animation: random-bg .5s linear infinite;
+  }
+  
+  
+  /* add animation to bg color  */
+  
+  @keyframes random-bg {
+    from {
+      filter: hue-rotate(0);
+    }
+    to {
+      filter: hue-rotate(360deg);
+    }
+  }
+  
+  .fun-btn {
+    /* change bg color to get different hues    */
+    background-color: salmon;
+    color: white;
+    padding: 12% 12%;
+    border: none;
+    transition: all .3s ease;
+    border-radius: 5px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    outline: none;
+    align-self: center;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 2vw;
+    width: 100%;
+    margin: auto;
+  }
+  
+  .fun-btn:hover {
+    animation: random-bg .5s linear infinite, grow 1300ms ease infinite;
+  }
+  
+  .start-fun {
+    background-color: #fff !important;
+    /* change color of button text when fun is started   */
+    color: salmon !important;
+  }
+  
+  /* pulsating effect on button */
+  @keyframes grow {
+    0% {
+      transform: scale(1);
+    }
+    14% {
+      transform: scale(1.3);
+    }
+    28% {
+      transform: scale(1);
+    }
+    42% {
+      transform: scale(1.3);
+    }
+    70% {
+      transform: scale(1);
+    }
+  }
